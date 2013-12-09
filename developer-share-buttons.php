@@ -25,13 +25,13 @@ class DeveloperShareButtons {
       // %2$s = share title
       // %3$s = share text
       // %4$s = share image
-      'facebook'    => array( 'title' => 'Facebook', 'url_structure' => 'http://www.facebook.com/sharer.php?u=%1$s', 'url_after_title' => false ),
-      'twitter'     => array( 'title' => 'Twitter', 'url_structure' => 'http://twitter.com/share?url=%1$s&text=%2$s', 'url_after_title' => true ),
-      'google'      => array( 'title' => 'Google+', 'url_structure' => 'https://plus.google.com/share?url=%1$s', 'url_after_title' => false ),
-      'reddit'      => array( 'title' => 'Reddit', 'url_structure' => 'http://reddit.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
-      'linkedin'    => array( 'title' => 'LinkedIn', 'url_structure' => 'http://www.linkedin.com/shareArticle?mini=true&url=%1$s', 'url_after_title' => false ),
-      'stumbleupon' => array( 'title' => 'StumbleUpon', 'url_structure' => 'http://www.stumbleupon.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
-      'pinterest'   => array( 'title' => 'Pinterest', 'url_structure' => 'http://pinterest.com/pin/create/button/?url=%1$s&media=%4$s', 'url_after_title' => false ),
+      'facebook'    => array( 'id' => 'facebook', 'title' => 'Facebook', 'url_structure' => 'http://www.facebook.com/sharer.php?u=%1$s', 'url_after_title' => false ),
+      'twitter'     => array( 'id' => 'twitter', 'title' => 'Twitter', 'url_structure' => 'http://twitter.com/share?url=%1$s&text=%2$s', 'url_after_title' => true ),
+      'google'      => array( 'id' => 'google','title' => 'Google+', 'url_structure' => 'https://plus.google.com/share?url=%1$s', 'url_after_title' => false ),
+      'reddit'      => array( 'id' => 'reddit', 'title' => 'Reddit', 'url_structure' => 'http://reddit.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
+      'linkedin'    => array( 'id' => 'linkedin', 'title' => 'LinkedIn', 'url_structure' => 'http://www.linkedin.com/shareArticle?mini=true&url=%1$s', 'url_after_title' => false ),
+      'stumbleupon' => array( 'id' => 'stumbleupon', 'title' => 'StumbleUpon', 'url_structure' => 'http://www.stumbleupon.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
+      'pinterest'   => array( 'id' => 'pinterest', 'title' => 'Pinterest', 'url_structure' => 'http://pinterest.com/pin/create/button/?url=%1$s&media=%4$s', 'url_after_title' => false ),
   );
 
   function __construct() {
@@ -156,7 +156,7 @@ class DeveloperShareButtons {
       $share_text = apply_filters( static::$slug_ . '_share_text', $share_text );
 
       $url = sprintf( $service['url_structure'], $url, $title, $text, $image );
-      $html = sprintf( '<a target="_blank" href="%1$s" class="%2$s %2$s--%3$s"><span class="%2$s__text %2$s--%3$s__text">%4$s</span></a> ', $url, $css_class, key( $service ), $share_text . $service['title'] );
+      $html = sprintf( '<a target="_blank" href="%1$s" class="%2$s__item %2$s__item--%3$s"><span class="%2$s__text %2$s__text--%3$s">%4$s</span></a> ', $url, $css_class, $service['id'], $share_text . $service['title'] );
 
       return $html;
 
