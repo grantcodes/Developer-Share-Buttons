@@ -69,7 +69,7 @@ class Dev_Share_Buttons_Widget extends WP_Widget {
     </p>
       <p>
     <?php foreach ( DeveloperShareButtons::$services as $service_id => $service ): ?>
-        <label><input type="checkbox" class="checkbox" <?php checked( in_array( $service_id, $services ) ); ?> name="<?php echo $this->get_field_name( 'services' ); ?>[]" value="<?php echo esc_attr( $service_id ); ?>"> <?php _e( $service['title'] ); ?></label><br>
+        <label><input type="checkbox" class="checkbox" <?php checked( isset( $services ) && in_array( $service_id, $services ) ); ?> name="<?php echo $this->get_field_name( 'services' ); ?>[]" value="<?php echo esc_attr( $service_id ); ?>"> <?php _e( $service['title'] ); ?></label><br>
     <?php endforeach; ?>
       </p>
     <?php

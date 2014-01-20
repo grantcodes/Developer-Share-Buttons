@@ -208,7 +208,7 @@ class DeveloperShareButtons {
     $links = array();
 
     foreach ( static::$services as $service_id => $service ) {
-      if ( $options[$service_id] ) {
+      if ( isset( $options[$service_id] ) && $options[$service_id] ) {
         $links[$service_id] = array(
           'title' => $service['title'],
           'url' => $options[$service_id],
