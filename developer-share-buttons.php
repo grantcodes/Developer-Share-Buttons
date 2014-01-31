@@ -238,24 +238,24 @@ $dev_share_buttons = new DeveloperShareButtons();
 
 if ( !function_exists( 'get_dev_share_buttons' ) ) {
   function get_dev_share_buttons( $services = false, $url = false, $title = false, $text = false, $image = false ) {
-    DeveloperShareButtons::get_buttons( $services, $url, $title, $text, $image );
+    return DeveloperShareButtons::get_buttons( $services, $url, $title, $text, $image );
   }
 }
 
 if ( !function_exists( 'the_dev_share_buttons' ) ) {
   function the_dev_share_buttons( $services = false, $url = false, $title = false, $text = false, $image = false ) {
-    DeveloperShareButtons::the_buttons( $services, $url, $title, $text, $image );
+    return DeveloperShareButtons::the_buttons( $services, $url, $title, $text, $image );
   }
 }
 
 if ( !function_exists( 'get_dev_share_links' ) ) {
   function get_dev_share_links( $services = false, $url = false, $title = false, $text = false, $image = false ) {
-    DeveloperShareButtons::get_profile_links();
+    return DeveloperShareButtons::get_profile_links();
   }
 }
 
 if ( !function_exists( 'the_dev_share_links' ) ) {
   function the_dev_share_links( $services = false, $url = false, $title = false, $text = false, $image = false ) {
-    DeveloperShareButtons::the_profile_links();
+    return DeveloperShareButtons::the_profile_links();
   }
 }
