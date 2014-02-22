@@ -363,13 +363,13 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
     }
 
     if ( !function_exists( 'get_dev_share_links' ) ) {
-        function get_dev_share_links( $services = false, $url = '', $title = '', $text = '', $image = '' ) {
+        function get_dev_profile_links() {
             return DeveloperShareButtons::get_profile_links();
         }
     }
 
     if ( !function_exists( 'the_dev_share_links' ) ) {
-        function the_dev_share_links( $services = false, $url = '', $title = '', $text = '', $image = '' ) {
+        function the_dev_profile_links() {
             return DeveloperShareButtons::the_profile_links();
         }
     }
