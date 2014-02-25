@@ -325,7 +325,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
             if ( $links = static::get_profile_links() ) {
                 $html = '<div class="' . static::$slug . '-profiles">';
                 foreach ($links as $service_id => $service_link) {
-                    $html .= '<a class="' . static::$slug . '-link ' . static::$slug . '-link--' . $service_id .'" href="' . $service_link['url'] . '"><span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span></a>';
+                    $html .= '<a class="' . static::$slug . '-link ' . static::$slug . '-link--' . $service_id .'" href="' . $service_link['url'] . '"><span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span></a> ';
                 }
                 $html .= '</div>';
                 echo $html;
