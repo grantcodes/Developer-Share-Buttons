@@ -32,13 +32,13 @@ No. Do it yourself.
 
 You can add more services using a filter:
 
-`add_filter( 'dev_share_buttons_services', 'my_new_service' );
-function my_new_service( $services ) {
-    $services['myserviceid'] = array(
-        'id' => 'myserviceid',
-        'title' => 'My Service Title',
-        'url_structure' => 'http://www.shareurl.com/?url=%1$s&title=%2$s&text=%3$s&image=%4$s',
-        'url_after_title' => false
-    );
-    return $services;
-}`
+    add_filter( 'dev_share_buttons_services', 'my_new_service' );
+    function my_new_service( $services ) {
+        $services['myserviceid'] = array(
+            'id' => 'myserviceid',
+            'title' => 'My Service Title',
+            'url_structure' => 'http://www.shareurl.com/?url=%1$s&title=%2$s&text=%3$s&image=%4$s',
+            'url_after_title' => false
+        );
+        return $services;
+    }
