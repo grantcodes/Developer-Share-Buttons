@@ -358,7 +358,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
 
     if ( !function_exists( 'the_dev_share_buttons' ) ) {
         function the_dev_share_buttons( $services = false, $url = '', $title = '', $text = '', $image = '' ) {
-            return DeveloperShareButtons::the_buttons( $services, $url, $title, $text, $image );
+            DeveloperShareButtons::the_buttons( $services, $url, $title, $text, $image );
         }
     }
 
@@ -370,7 +370,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
 
     if ( !function_exists( 'the_dev_share_links' ) ) {
         function the_dev_profile_links() {
-            return DeveloperShareButtons::the_profile_links();
+            DeveloperShareButtons::the_profile_links();
         }
     }
 }
