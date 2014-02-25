@@ -3,7 +3,7 @@ Contributors: terminalpixel
 Tags: share buttons, developer, social
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
 A super lightweight social sharing solution. No JavaScript. No images. No CSS.
 
@@ -51,3 +51,9 @@ function my_new_service( $services ) {
     );
     return $services;
 }`
+
+== Changelog ==
+
+= 1.0.1 =
+* Prevent `the_` functions from returning values
+* Add spaces between profile links
