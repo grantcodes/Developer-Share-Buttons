@@ -60,11 +60,11 @@ if ( !class_exists( 'Dev_Share_Buttons_Widget' ) ) {
             ?>
             <p>
                 <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php if ( ! empty( $title ) ) { echo esc_attr( $title ); } ?>" />
             </p>
             <p>
                 <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'Url:' ); ?></label>
-                <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="url" placeholder="Defaults to current url" value="<?php echo esc_attr( $url ); ?>" />
+                <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="url" placeholder="Defaults to current url" value="<?php if ( ! empty( $url ) ) { echo esc_attr( $url ); } ?>" />
             </p>
             <p>
                 <label><?php _e( 'Services:' ); ?></label>
@@ -160,7 +160,7 @@ if ( !class_exists( 'Dev_Share_Buttons_Profiles_Widget' ) ) {
             ?>
                 <p>
                     <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-                    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+                    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php if ( ! empty( $title ) ) { echo esc_attr( $title ); } ?>" />
                 </p>
             <?php
         }

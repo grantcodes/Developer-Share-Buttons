@@ -2,7 +2,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.1
+Version: 1.0.2
 Author: Terminal Pixel
 Author URI: http://wwww.terminalpixel.co.uk/
 License: GPL3
@@ -38,7 +38,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
          * Just saves the default option values
          * @return void
          */
-        function activation_hook() {
+        public static function activation_hook() {
             $defaults = array(
                 'default-services' => array(
                     'facebook' => 'facebook',
@@ -151,7 +151,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
          * @param  array $atts Shortcode attributes
          * @return string      Html for the share links
          */
-        function shortcode( $atts ) {
+        public static function shortcode( $atts ) {
             extract( shortcode_atts( array(
                 'services' => false,
                 'url' => false,
@@ -166,7 +166,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
          * Returns all the supported services included ones added by filters
          * @return array Supported services
          */
-        function get_services() {
+        public static function get_services() {
             $defaults = array(  //array of services as key => array( title => human readable title, url_structure => share url structure )
                 // %1$s = url to share
                 // %2$s = share title
