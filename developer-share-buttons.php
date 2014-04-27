@@ -213,21 +213,35 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
 
                     $css_class = static::$slug;
 
-                    if ( !$title && !$url )
-                        $title = get_the_title();
+                    // If the page is not a proper post object fall back to defaults
+                    if ( get_post() ) {
 
-                    if ( !$url )
-                        $url = get_permalink();
+                        if ( !$title && !$url ) {
+                            $title = get_the_title();
+                        }
 
-                    if ( $service['url_after_title'] && $title )
+                        if ( !$url ) {
+                            $url = get_permalink();
+                        }
+
+
+                        if ( !$image && $image_id = get_post_thumbnail_id() ) {
+                            $image_object = wp_get_attachment_image_src( $image_id, 'full' );
+                            $image = $image_object[0];
+                        }
+
+                    } else {
+
+                        $title = get_bloginfo( 'title' );
+                        $url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ;
+
+                    }
+
+                    if ( $service['url_after_title'] && $title ) {
                         $title .= ' ' . $url;
+                    }
 
                     $url = urlencode( $url );
-
-                    if ( !$image && $image_id = get_post_thumbnail_id() ) {
-                        $image_object = wp_get_attachment_image_src( $image_id, 'full' );
-                        $image = $image_object[0];
-                    }
 
                     $share_text = apply_filters( static::$slug_ . '_share_text', $share_text );
 
