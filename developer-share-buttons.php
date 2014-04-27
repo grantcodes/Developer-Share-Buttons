@@ -2,7 +2,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.3
+Version: 1.0.4
 Author: Terminal Pixel
 Author URI: http://wwww.terminalpixel.co.uk/
 License: GPL3
