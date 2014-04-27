@@ -140,8 +140,8 @@ if ( !class_exists( 'Dev_Share_Buttons_Profiles_Widget' ) ) {
             echo $args['before_widget'];
             if ( ! empty( $title ) )
                 echo $args['before_title'] . $title . $args['after_title'];
-            if ( function_exists( 'the_dev_share_links' ) ) {
-                the_dev_share_links();
+            if ( function_exists( 'the_dev_profile_links' ) ) {
+                the_dev_profile_links();
             }
             echo $args['after_widget'];
         }

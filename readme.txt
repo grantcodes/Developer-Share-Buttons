@@ -57,3 +57,6 @@ function my_new_service( $services ) {
 = 1.0.1 =
 * Prevent `the_` functions from returning values
 * Add spaces between profile links
+
+= 1.0.3 =
+* Fix profile link widget
