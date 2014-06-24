@@ -2,7 +2,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.4
+Version: 1.0.5
 Author: Terminal Pixel
 Author URI: http://wwww.terminalpixel.co.uk/
 License: GPL3
@@ -23,6 +23,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
         static $name      = 'Developer Share Buttons'; //Human-readable name of plugin
         static $slug      = 'dev-share-buttons';       //plugin slug, generally base filename and in url on wordpress.org
         static $slug_     = 'dev_share_buttons';       //slug with underscores (PHP/JS safe)
+        static $relme     = null;
         public $version   = '1.0.0';
 
         function __construct() {
@@ -129,6 +130,14 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
                 if ( $service['url_structure'] )
                     $settings_fields[static::$slug_ . '_options'][0]['options'][$service_id] = $service['title'];
             }
+
+            // Add rel="me" option
+            $settings_fields[static::$slug_ . '_urls'][] = array(
+                'name' => 'relme',
+                'label' => __( 'Add rel="me" attributes' ),
+                'type' => 'checkbox',
+                'default' => false
+            );
 
             return $settings_fields;
         }
@@ -339,13 +348,38 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
             if ( $links = static::get_profile_links() ) {
                 $html = '<div class="' . static::$slug . '-profiles">';
                 foreach ($links as $service_id => $service_link) {
-                    $html .= '<a class="' . static::$slug . '-link ' . static::$slug . '-link--' . $service_id .'" href="' . $service_link['url'] . '"><span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span></a> ';
+                    $attributes  = 'class="' . static::$slug . '-link ' . static::$slug . '-link--' . $service_id .'" ';
+                    $attributes .= 'href="' . $service_link['url'] . '" ';
+                    if ( static::is_rel_me() ) {
+                        $attributes .= 'rel="me" ';
+                    }
+                    $html .= '<a ' . $attributes . '><span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span></a> ';
                 }
                 $html .= '</div>';
                 echo $html;
                 return true;
             } else {
                 return false;
+            }
+        }
+
+        /**
+         * Checks to see if the rel="me" option is enabled
+         * @return boolean
+         */
+        public static function is_rel_me() {
+            if ( isset( static::$relme ) ) {
+                return static::$relme;
+            } else {
+                $options = get_option( static::$slug_ . '_urls' );
+                $relme = $options['relme'];
+                if ( $relme == 'off' ) {
+                    $relme = false;
+                } elseif ( $relme == 'on' ) {
+                    $relme = true;
+                }
+                static::$relme = $relme;
+                return $relme;
             }
         }
 

@@ -2,8 +2,8 @@
 Contributors: terminalpixel
 Tags: share buttons, developer, social
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.0.4
+Tested up to: 3.9.1
+Stable tag: 1.0.5
 
 A super lightweight social sharing solution. No JavaScript. No images. No CSS.
 
@@ -63,3 +63,6 @@ function my_new_service( $services ) {
 
 = 1.0.4 =
 * Improve support for non post object based pages
+
+= 1.0.5 =
+* Add `rel="me"` support for profile links
