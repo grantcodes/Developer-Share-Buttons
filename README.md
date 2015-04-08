@@ -8,7 +8,7 @@ A simple, customisable share buttons solution designed specifically for theme de
 
 ## Frequently Asked Questions
 
-### What functions are available to use? =
+### What functions are available to use?
 
 There are 4 functions available to use:
 1. `get_dev_share_buttons` returns html of share links

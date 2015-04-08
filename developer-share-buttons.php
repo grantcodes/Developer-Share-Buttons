@@ -2,7 +2,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.5
+Version: 1.0.6
 Author: Terminal Pixel
 Author URI: http://wwww.terminalpixel.co.uk/
 License: GPL3
@@ -24,7 +24,7 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
         static $slug      = 'dev-share-buttons';       //plugin slug, generally base filename and in url on wordpress.org
         static $slug_     = 'dev_share_buttons';       //slug with underscores (PHP/JS safe)
         static $relme     = null;
-        public $version   = '1.0.0';
+        public $version   = '1.0.6';
 
         function __construct() {
             $this->settings_api = new WeDevs_Settings_API;
@@ -181,13 +181,13 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
                 // %2$s = share title
                 // %3$s = share text
                 // %4$s = share image
-                'facebook'    => array( 'id' => 'facebook', 'title' => 'Facebook', 'url_structure' => 'http://www.facebook.com/sharer.php?u=%1$s', 'url_after_title' => false ),
-                'twitter'     => array( 'id' => 'twitter', 'title' => 'Twitter', 'url_structure' => 'http://twitter.com/share?url=%1$s&text=%2$s', 'url_after_title' => true ),
+                'facebook'    => array( 'id' => 'facebook', 'title' => 'Facebook', 'url_structure' => 'https://www.facebook.com/sharer.php?u=%1$s', 'url_after_title' => false ),
+                'twitter'     => array( 'id' => 'twitter', 'title' => 'Twitter', 'url_structure' => 'https://twitter.com/intent/tweet?url=%1$s&text=%2$s', 'url_after_title' => false ),
                 'google'      => array( 'id' => 'google','title' => 'Google+', 'url_structure' => 'https://plus.google.com/share?url=%1$s', 'url_after_title' => false ),
-                'reddit'      => array( 'id' => 'reddit', 'title' => 'Reddit', 'url_structure' => 'http://reddit.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
-                'linkedin'    => array( 'id' => 'linkedin', 'title' => 'LinkedIn', 'url_structure' => 'http://www.linkedin.com/shareArticle?mini=true&url=%1$s', 'url_after_title' => false ),
-                'stumbleupon' => array( 'id' => 'stumbleupon', 'title' => 'StumbleUpon', 'url_structure' => 'http://www.stumbleupon.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
-                'pinterest'   => array( 'id' => 'pinterest', 'title' => 'Pinterest', 'url_structure' => 'http://pinterest.com/pin/create/button/?url=%1$s&media=%4$s', 'url_after_title' => false ),
+                'reddit'      => array( 'id' => 'reddit', 'title' => 'Reddit', 'url_structure' => 'https://reddit.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
+                'linkedin'    => array( 'id' => 'linkedin', 'title' => 'LinkedIn', 'url_structure' => 'https://www.linkedin.com/shareArticle?mini=true&url=%1$s', 'url_after_title' => false ),
+                'stumbleupon' => array( 'id' => 'stumbleupon', 'title' => 'StumbleUpon', 'url_structure' => 'https://www.stumbleupon.com/submit?url=%1$s&title=%2$s', 'url_after_title' => false ),
+                'pinterest'   => array( 'id' => 'pinterest', 'title' => 'Pinterest', 'url_structure' => 'https://www.pinterest.com/pin/find/?url=%1$s', 'url_after_title' => false ),
                 'instagram'   => array( 'id' => 'instagram', 'title' => 'Instagram', 'url_structure' => false, 'url_after_title' => false ),
                 'github'      => array( 'id' => 'github', 'title' => 'GitHub', 'url_structure' => false, 'url_after_title' => false )
             );
@@ -251,6 +251,9 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
                     }
 
                     $url = urlencode( $url );
+                    $title = urlencode( $title );
+                    $text = urlencode( $text );
+                    $image = urlencode( $image );
 
                     $share_text = apply_filters( static::$slug_ . '_share_text', $share_text );
 
