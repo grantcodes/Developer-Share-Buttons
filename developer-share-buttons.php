@@ -325,7 +325,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					$css_class = static::$slug;
 
 					// If the page is not a proper post object fall back to defaults.
-					if ( get_post() ) {
+					if ( is_singular() && get_post() ) {
 						if ( ! $title && ! $url ) {
 							$title = get_the_title();
 						}
@@ -338,6 +338,9 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 							$image_object = wp_get_attachment_image_src( $image_id, 'full' );
 							$image = $image_object[0];
 						}
+					} else if ( is_archive() ) {
+						$title = get_the_archive_title();
+						$url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 					} else {
 						$title = get_bloginfo( 'title' );
 						$url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
