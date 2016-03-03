@@ -130,7 +130,7 @@ if ( ! class_exists( 'Dev_Share_Buttons_Profiles_Widget' ) ) {
 				__( 'Developer Share Buttons Profiles', 'dev-share-buttons-profiles' ),
 				array(
 					'description' => __( 'Developer Share Buttons Social Profiles Widget', 'dev-share-buttons-profiles' ),
-				),
+				)
 			);
 		}
 
