@@ -1,15 +1,19 @@
 <?php
 /**
- * Plugin Name: Developer Share Buttons
- * Description: Share buttons with no CSS and no JavaScript
- * Version: 1.0.7
- * Author: Grant Richmond
- * Author URI: https://grant.codes/
- * License: GPL3
- * License URI: http://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: dev-share-buttons
+ * The Developer Share Buttons WordPress plugin
  *
  * @package dev-share-buttons
+ * /
+
+/*
+Plugin Name: Developer Share Buttons
+Description: Share buttons with no CSS and no JavaScript
+Version: 1.0.7
+Author: Grant Richmond
+Author URI: https://grant.codes/
+License: GPL3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: dev-share-buttons
  */
 
 if ( ! class_exists( 'DeveloperShareButtons' ) ) {
