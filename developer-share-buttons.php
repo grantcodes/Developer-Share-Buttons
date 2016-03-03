@@ -256,9 +256,11 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
                     $image = urlencode( $image );
 
                     $share_text = apply_filters( static::$slug_ . '_share_text', $share_text );
+                    $after_text = apply_filters( static::$slug_ . '_after_share_text', '', $service );
+                    $before_text = apply_filters( static::$slug_ . '_before_share_text', '', $service );
 
                     $url = sprintf( $service['url_structure'], $url, $title, $text, $image );
-                    $html = sprintf( '<a target="_blank" href="%1$s" class="%2$s__item %2$s__item--%3$s"><span class="%2$s__text %2$s__text--%3$s">%4$s</span></a> ', $url, $css_class, $service['id'], $share_text . $service['title'] );
+                    $html = sprintf( '<a target="_blank" href="%1$s" class="%2$s__item %2$s__item--%3$s">%5$s<span class="%2$s__text %2$s__text--%3$s">%4$s</span>%6$s</a> ', $url, $css_class, $service['id'], $share_text . $service['title'], $before_text, $after_text );
 
                     return $html;
                 }
@@ -356,7 +358,9 @@ if ( !class_exists( 'DeveloperShareButtons' ) ) {
                     if ( static::is_rel_me() ) {
                         $attributes .= 'rel="me" ';
                     }
-                    $html .= '<a ' . $attributes . '><span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span></a> ';
+                    $after_text = apply_filters( static::$slug_ . '_after_profile_text', '', $service_id );
+                    $before_text = apply_filters( static::$slug_ . '_before_profile_text', '', $service_id );
+                    $html .= '<a ' . $attributes . '>' . $after_text . '<span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span>' . $before_text . '</a> ';
                 }
                 $html .= '</div>';
                 echo $html;
