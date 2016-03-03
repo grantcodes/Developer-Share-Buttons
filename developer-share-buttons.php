@@ -440,6 +440,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			foreach ( static::get_services() as $service_id => $service ) {
 				if ( isset( $options[ $service_id ] ) && $options[ $service_id ] ) {
 					$links[ $service_id ] = array(
+						'id' => $service_id,
 						'title' => $service['title'],
 						'url' => $options[ $service_id ],
 					);
@@ -463,8 +464,8 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					if ( static::is_rel_me() ) {
 						$attributes .= 'rel="me" ';
 					}
-					$after_text = apply_filters( static::$slug_ . '_after_profile_text', '', $service_id );
-					$before_text = apply_filters( static::$slug_ . '_before_profile_text', '', $service_id );
+					$after_text = apply_filters( static::$slug_ . '_after_profile_text', '', $service_link );
+					$before_text = apply_filters( static::$slug_ . '_before_profile_text', '', $service_link );
 					$html .= '<a ' . $attributes . '>' . $after_text . '<span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span>' . $before_text . '</a> ';
 				}
 				$html .= '</div>';
