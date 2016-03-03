@@ -42,3 +42,23 @@ You can add more services using a filter:
         );
         return $services;
     }
+
+### Adding Icons
+
+Icons can be added via pure css or the filters provided to add content before or after the button text:
+
+    // Add an svg icon to share buttons.
+    function my_share_social_icons( $html, $service ) {
+        $icon_url = get_stylesheet_directory_uri() . '/svg-icons.svg#' . $service['id'];
+        $icon_html = '<svg><use xlink:href="' . $icon_url . '"></use></svg>';
+        return $html . $icon_html;
+    }
+    add_filter( 'dev_share_buttons_after_share_text', 'my_share_social_icons', 10, 2 );
+    
+    // Add a png icon to profile links.
+    function my_profile_social_icons( $html, $service ) {
+        $icon_url = get_stylesheet_directory_uri() . '/social-icons/' . $service['id'] . '.png';
+        $icon_html = '<img src="' . $icon_url . '" />';
+        return $html . $icon_html;
+    }
+    add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 10, 2 );

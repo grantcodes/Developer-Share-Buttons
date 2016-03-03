@@ -1,9 +1,9 @@
 === Developer Share Buttons ===
 Contributors: terminalpixel
-Tags: share buttons, developer, social
+Tags: share buttons, developer, social, share
 Requires at least: 3.5
-Tested up to: 4.1.1
-Stable tag: 1.0.6
+Tested up to: 4.4.2
+Stable tag: 1.0.7
 
 A super lightweight social sharing solution. No JavaScript. No images. No CSS.
 
@@ -52,6 +52,26 @@ function my_new_service( $services ) {
     return $services;
 }`
 
+= Adding Icons +
+
+Icons can be added via pure css or the filters provided to add content before or after the button text:
+
+`// Add an svg icon to share buttons.
+function my_share_social_icons( $html, $service ) {
+    $icon_url = get_stylesheet_directory_uri() . '/svg-icons.svg#' . $service['id'];
+    $icon_html = '<svg><use xlink:href="' . $icon_url . '"></use></svg>';
+    return $html . $icon_html;
+}
+add_filter( 'dev_share_buttons_after_share_text', 'my_share_social_icons', 10, 2 );
+
+// Add a png icon to profile links.
+function my_profile_social_icons( $html, $service ) {
+    $icon_url = get_stylesheet_directory_uri() . '/social-icons/' . $service['id'] . '.png';
+    $icon_html = '<img src="' . $icon_url . '" />';
+    return $html . $icon_html;
+}
+add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 10, 2 );`
+
 == Changelog ==
 
 = 1.0.1 =
@@ -71,3 +91,7 @@ function my_new_service( $services ) {
 * Update to all https links
 * Use updated twitter and pinterest urls
 * Url encode more things for better character support
+
+= 1.0.7 =
+* Add extra filters to add content before and after button text (useful for icons)
+* Update coding standard

@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Developer Share Buttons
  * Description: Share buttons with no CSS and no JavaScript
- * Version: 1.0.6
- * Author: Terminal Pixel
- * Author URI: http://wwww.terminalpixel.co.uk/
+ * Version: 1.0.7
+ * Author: Grant Richmond
+ * Author URI: https://grant.codes/
  * License: GPL3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: dev-share-buttons
@@ -64,7 +64,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.0.6';
+		public $version = '1.0.7';
 
 		/**
 		 * Lets get this party started
