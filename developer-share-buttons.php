@@ -170,7 +170,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					'name' => $service_id,
 					'label' => __( $service['title'], static::$slug ),
 					'desc' => __( 'Your ' . $service['title'] . ' profile link', static::$slug ),
-					'type' => 'text',
+					'type' => 'url',
 					'default' => '',
 				);
 
