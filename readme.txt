@@ -2,8 +2,8 @@
 Contributors: terminalpixel
 Tags: share buttons, developer, social, share
 Requires at least: 3.5
-Tested up to: 4.4.2
-Stable tag: 1.0.7
+Tested up to: 4.7.2
+Stable tag: 1.0.8
 
 A super lightweight social sharing solution. No JavaScript. No images. No CSS.
 
@@ -95,3 +95,6 @@ add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 1
 = 1.0.7 =
 * Add extra filters to add content before and after button text (useful for icons)
 * Update coding standard
+
+= 1.0.8 =
+* Use `rawurlencode` to improve compatibility with some services

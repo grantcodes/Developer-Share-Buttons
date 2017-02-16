@@ -8,7 +8,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.7
+Version: 1.0.8
 Author: Grant Richmond
 Author URI: https://grant.codes/
 License: GPL3
