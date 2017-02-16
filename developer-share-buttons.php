@@ -354,10 +354,10 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 						$title .= ' ' . $url;
 					}
 
-					$url = urlencode( $url );
-					$title = urlencode( $title );
-					$text = urlencode( $text );
-					$image = urlencode( $image );
+					$url = rawurlencode( $url );
+					$title = rawurlencode( $title );
+					$text = rawurlencode( $text );
+					$image = rawurlencode( $image );
 
 					$share_text = apply_filters( static::$slug_ . '_share_text', $share_text );
 					$after_text = apply_filters( static::$slug_ . '_after_share_text', '', $service );
