@@ -8,7 +8,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.0.8
+Version: 1.1.0
 Author: Grant Richmond
 Author URI: https://grant.codes/
 License: GPL3
@@ -68,7 +68,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.0.7';
+		public static $version = '1.1.0';
 
 		/**
 		 * Lets get this party started
@@ -78,6 +78,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style' ) );
 
 			add_shortcode( static::$slug_, array( $this, 'shortcode' ) );
 		}
@@ -120,6 +121,18 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 */
 		function admin_menu() {
 			add_options_page( static::$name, static::$name, 'delete_posts', static::$slug, array( $this, 'plugin_page' ) );
+		}
+
+		/**
+		 * Loads the default css file if it is enabled
+		 *
+		 * @return void
+		 */
+		function enqueue_style() {
+			$load_css = false;
+			if ( apply_filters( static::$slug_ . '_css', $load_css ) ) {
+				wp_enqueue_style( static::$slug, plugin_dir_url( __FILE__ ) . 'style.css', false, static::$version );
+			}
 		}
 
 		/**
@@ -292,6 +305,48 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 				'github' => array(
 					'id' => 'github',
 					'title' => 'GitHub',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'medium' => array(
+					'id' => 'medium',
+					'title' => 'Medium',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'messenger' => array(
+					'id' => 'messenger',
+					'title' => 'Messenger',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'skype' => array(
+					'id' => 'skype',
+					'title' => 'Skype',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'snapchat' => array(
+					'id' => 'snapchat',
+					'title' => 'Snapchat',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'wechat' => array(
+					'id' => 'wechat',
+					'title' => 'WeChat',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'whatsapp' => array(
+					'id' => 'whatsapp',
+					'title' => 'WhatsApp',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'youtube' => array(
+					'id' => 'youtube',
+					'title' => 'YouTube',
 					'url_structure' => false,
 					'url_after_title' => false,
 				),

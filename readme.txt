@@ -3,7 +3,7 @@ Contributors: terminalpixel
 Tags: share buttons, developer, social, share
 Requires at least: 3.5
 Tested up to: 4.7.2
-Stable tag: 1.0.8
+Stable tag: 1.1.0
 
 A super lightweight social sharing solution. No JavaScript. No images. No CSS.
 
@@ -35,7 +35,9 @@ There are 4 functions available to use:
 
 = Are there default styles for this? =
 
-No. Do it yourself.
+Yes there are! I have added some simple default styles that you can optionally enable:
+
+`add_filter( 'dev_share_buttons_css', '__return_true' );`
 
 = Adding more services =
 
@@ -98,3 +100,7 @@ add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 1
 
 = 1.0.8 =
 * Use `rawurlencode` to improve compatibility with some services
+
+= 1.1.0 =
+* Add some optional default styles
+* Add Medium, Messenger, Skype, Snapchat, WeChat, WhatsApp and YouTube profile links

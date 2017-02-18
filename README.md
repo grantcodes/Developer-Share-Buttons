@@ -26,7 +26,9 @@ There are 4 functions available to use:
 
 ### Are there default styles for this?
 
-No. Do it yourself.
+Yes there are! I have added some simple default styles that you can optionally enable:
+
+    add_filter( 'dev_share_buttons_css', '__return_true' );
 
 ### Adding more services
 
@@ -54,7 +56,7 @@ Icons can be added via pure css or the filters provided to add content before or
         return $html . $icon_html;
     }
     add_filter( 'dev_share_buttons_after_share_text', 'my_share_social_icons', 10, 2 );
-    
+
     // Add a png icon to profile links.
     function my_profile_social_icons( $html, $service ) {
         $icon_url = get_stylesheet_directory_uri() . '/social-icons/' . $service['id'] . '.png';
