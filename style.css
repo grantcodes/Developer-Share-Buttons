@@ -14,6 +14,7 @@
 	font-size: 1em;
 	font-weight: bold;
 	text-decoration: none;
+	text-align: left;
 	margin: .15em;
 	background-color: #222;
 	background-repeat: no-repeat;
@@ -22,6 +23,7 @@
 	color: #f8f8f8;
 	padding: .5em;
 	line-height: 1.2;
+	border: none;
 	border-radius: 3px;
 	transition: background .2s, color .2s;
 }
@@ -40,6 +42,7 @@
 .dev-share-buttons-link:hover,
 .dev-share-buttons-link:focus,
 .dev-share-buttons-link:active {
+	border: none;
 	background-color: #000;
 	color: #fff;
 }
@@ -306,5 +309,11 @@
 .dev-share-buttons__item--messenger:active,
 .dev-share-buttons-link--messenger:active {
 	background-color: #006BE6;
+}
+
+.dev-share-buttons__item--share-api {
+	padding-left: 2.2em;
+	/*background-color: #3b5998;*/
+	background-image: url(./svgs/share.svg);
 }
 

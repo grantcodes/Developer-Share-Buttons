@@ -79,6 +79,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'share_api_script' ) );
 
 			add_shortcode( static::$slug_, array( $this, 'shortcode' ) );
 		}
@@ -133,6 +134,10 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			if ( apply_filters( static::$slug_ . '_css', $load_css ) ) {
 				wp_enqueue_style( static::$slug, plugin_dir_url( __FILE__ ) . 'style.css', false, static::$version );
 			}
+		}
+
+		function share_api_script() {
+			wp_enqueue_script( static::$slug . '-share-api', plugin_dir_url( __FILE__ ) . 'share-api.js', false, static::$version, true );
 		}
 
 		/**
@@ -449,7 +454,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 				}
 			}
 
-			$html = '<div class="' . static::$slug . '">';
+			$html = '<div class="' . static::$slug . '" data-share-title="' . esc_attr( $title ) . '" data-share-text="' . esc_attr( $text ) . '">';
 
 			ob_start();
 			do_action( 'before_' . static::$slug_ );
