@@ -3,9 +3,9 @@ Contributors: terminalpixel
 Tags: share buttons, developer, social, share
 Requires at least: 3.5
 Tested up to: 4.7.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 
-A super lightweight social sharing solution. No JavaScript. No images. No CSS.
+A super lightweight social sharing solution using either the Web Share API or simple sharing links.
 
 == Description ==
 
@@ -54,7 +54,7 @@ function my_new_service( $services ) {
     return $services;
 }`
 
-= Adding Icons +
+= Adding Icons =
 
 Icons can be added via pure css or the filters provided to add content before or after the button text:
 
@@ -73,6 +73,12 @@ function my_profile_social_icons( $html, $service ) {
     return $html . $icon_html;
 }
 add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 10, 2 );`
+
+= Disabling the Web Share API =
+
+The Web Share API is disabled by default but I recommend enabling it as it will display a single share button instead of the multiple buttons if the browser supports it. If you wish to enable this feature you can add a filter:
+
+`add_filter( 'dev_share_buttons_share_api', '__return_true' );`
 
 == Changelog ==
 
@@ -104,3 +110,6 @@ add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 1
 = 1.1.0 =
 * Add some optional default styles
 * Add Medium, Messenger, Skype, Snapchat, WeChat, WhatsApp and YouTube profile links
+
+= 1.2.0 =
+* Add support for the Web Share API

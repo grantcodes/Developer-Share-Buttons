@@ -1,6 +1,6 @@
 # Developer Share Buttons
 
-A super lightweight social sharing solution. No JavaScript. No images. No CSS.
+A super lightweight social sharing solution using either the Web Share API or simple sharing links.
 
 ## Description
 
@@ -64,3 +64,9 @@ Icons can be added via pure css or the filters provided to add content before or
         return $html . $icon_html;
     }
     add_filter( 'dev_share_buttons_after_profile_text', 'my_profile_social_icons', 10, 2 );
+
+### Enabling the Web Share API
+
+The Web Share API is disabled by default but I recommend enabling it as it will display a single share button instead of the multiple buttons if the browser supports it. If you wish to enable this feature you can add a filter:
+
+    add_filter( 'dev_share_buttons_share_api', '__return_true' );

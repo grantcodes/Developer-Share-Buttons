@@ -8,7 +8,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.1.0
+Version: 1.2.0
 Author: Grant Richmond
 Author URI: https://grant.codes/
 License: GPL3
@@ -68,7 +68,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 *
 		 * @var string
 		 */
-		public static $version = '1.1.0';
+		public static $version = '1.2.0';
 
 		/**
 		 * Lets get this party started
@@ -136,8 +136,16 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			}
 		}
 
+		/**
+		 * Enqueues the share api script
+		 *
+		 * @return void
+		 */
 		function share_api_script() {
-			wp_enqueue_script( static::$slug . '-share-api', plugin_dir_url( __FILE__ ) . 'share-api.js', false, static::$version, true );
+			$share_api = false;
+			if ( apply_filters( static::$slug_ . '_share_api', $share_api ) ) {
+				wp_enqueue_script( static::$slug . '-share-api', plugin_dir_url( __FILE__ ) . 'share-api.js', false, static::$version, true );
+			}
 		}
 
 		/**

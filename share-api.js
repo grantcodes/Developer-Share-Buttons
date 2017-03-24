@@ -12,7 +12,6 @@ if (navigator && navigator.share !== undefined) {
 		if (container.dataset && container.dataset.shareText) {
 			shareData.text = container.dataset.shareText;
 		}
-		console.log(shareData);
 		var shareApiButton = document.createElement('button');
 		shareApiButton.className = 'dev-share-buttons__item dev-share-buttons__item--share-api';
 		shareApiButton.innerText = 'Share';
