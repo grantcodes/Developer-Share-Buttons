@@ -1,39 +1,39 @@
 .dev-share-buttons,
 .dev-share-buttons-profiles {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: -0.15em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -0.15em;
 }
 
 .dev-share-buttons__item,
 .dev-share-buttons-link {
-	position: relative;
-	display: inline-block;
-	flex-grow: 1;
-	font-size: 1em;
-	font-weight: bold;
-	text-decoration: none;
-	text-align: left;
-	margin: .15em;
-	background-color: #222;
-	background-repeat: no-repeat;
-	background-position: .5em center;
-	background-size: 1.2em auto;
-	color: #f8f8f8;
-	padding: .5em;
-	line-height: 1.2;
-	border: none;
-	border-radius: 3px;
-	transition: background .2s, color .2s;
+  position: relative;
+  display: inline-block;
+  flex-grow: 1;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: left;
+  margin: 0.15em;
+  background-color: #222;
+  background-repeat: no-repeat;
+  background-position: 0.5em center;
+  background-size: 1.2em auto;
+  color: #f8f8f8;
+  padding: 0.5em;
+  line-height: 1.2;
+  border: none;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .dev-share-buttons__item {
-	max-width: 16em;
+  max-width: 16em;
 }
 
 .dev-share-buttons-link {
-	max-width: 12em;
+  max-width: 12em;
 }
 
 .dev-share-buttons__item:hover,
@@ -42,16 +42,16 @@
 .dev-share-buttons-link:hover,
 .dev-share-buttons-link:focus,
 .dev-share-buttons-link:active {
-	border: none;
-	background-color: #000;
-	color: #fff;
+  border: none;
+  background-color: #000;
+  color: #fff;
 }
 
 .dev-share-buttons__item--facebook,
 .dev-share-buttons-link--facebook {
-	padding-left: 2.2em;
-	background-color: #3b5998;
-	background-image: url(./svgs/facebook.svg);
+  padding-left: 2.2em;
+  background-color: #3b5998;
+  background-image: url(./svgs/facebook.svg);
 }
 
 .dev-share-buttons__item--facebook:hover,
@@ -60,14 +60,14 @@
 .dev-share-buttons-link--facebook:focus,
 .dev-share-buttons__item--facebook:active,
 .dev-share-buttons-link--facebook:active {
-	background-color: #22407F;
+  background-color: #22407f;
 }
 
 .dev-share-buttons__item--twitter,
 .dev-share-buttons-link--twitter {
-	padding-left: 2.2em;
-	background-color: #00aced;
-	background-image: url(./svgs/twitter.svg);
+  padding-left: 2.2em;
+  background-color: #00aced;
+  background-image: url(./svgs/twitter.svg);
 }
 
 .dev-share-buttons__item--twitter:hover,
@@ -76,14 +76,14 @@
 .dev-share-buttons-link--twitter:focus,
 .dev-share-buttons__item--twitter:active,
 .dev-share-buttons-link--twitter:active {
-	background-color: #0093D4;
+  background-color: #0093d4;
 }
 
 .dev-share-buttons__item--google,
 .dev-share-buttons-link--google {
-	padding-left: 2.2em;
-	background-color: #dd4b39;
-	background-image: url(./svgs/google.svg);
+  padding-left: 2.2em;
+  background-color: #dd4b39;
+  background-image: url(./svgs/google.svg);
 }
 
 .dev-share-buttons__item--google:hover,
@@ -92,14 +92,14 @@
 .dev-share-buttons-link--google:focus,
 .dev-share-buttons__item--google:active,
 .dev-share-buttons-link--google:active {
-	background-color: #C43220;
+  background-color: #c43220;
 }
 
 .dev-share-buttons__item--linkedin,
 .dev-share-buttons-link--linkedin {
-	padding-left: 2.2em;
-	background-color: #007bb6;
-	background-image: url(./svgs/linkedin.svg);
+  padding-left: 2.2em;
+  background-color: #007bb6;
+  background-image: url(./svgs/linkedin.svg);
 }
 
 .dev-share-buttons__item--linkedin:hover,
@@ -108,14 +108,14 @@
 .dev-share-buttons-link--linkedin:focus,
 .dev-share-buttons__item--linkedin:active,
 .dev-share-buttons-link--linkedin:active {
-	background-color: #00629D;
+  background-color: #00629d;
 }
 
 .dev-share-buttons__item--youtube,
 .dev-share-buttons-link--youtube {
-	padding-left: 2.2em;
-	background-color: #bb0000;
-	background-image: url(./svgs/youtube.svg);
+  padding-left: 2.2em;
+  background-color: #bb0000;
+  background-image: url(./svgs/youtube.svg);
 }
 
 .dev-share-buttons__item--youtube:hover,
@@ -124,18 +124,21 @@
 .dev-share-buttons-link--youtube:focus,
 .dev-share-buttons__item--youtube:active,
 .dev-share-buttons-link--youtube:active {
-	background-color: #A20000;
+  background-color: #a20000;
 }
 
 .dev-share-buttons__item--instagram,
 .dev-share-buttons-link--instagram {
-	padding-left: 2.2em;
-	background-color: #ee583f;
-	background-position: .5em center, center center;
-	background-size: 1.2em auto, cover;
-	background-image: url(./svgs/instagram.svg);
-	background-image: url(./svgs/instagram.svg), -webkit-radial-gradient(70% 70% ellipse,#ee583f 8%,#d92d77 42%,#bd3381 58%);
-    background-image: url(./svgs/instagram.svg), radial-gradient(ellipse at 70% 70%,#ee583f 8%,#d92d77 42%,#bd3381 58%);
+  padding-left: 2.2em;
+  background-color: #ee583f;
+  background-position: 0.5em center, center center;
+  background-size: 1.2em auto, cover;
+  background-image: url(./svgs/instagram.svg);
+  background-image: url(./svgs/instagram.svg),
+    -webkit-radial-gradient(70% 70% ellipse, #ee583f 8%, #d92d77 42%, #bd3381
+          58%);
+  background-image: url(./svgs/instagram.svg),
+    radial-gradient(ellipse at 70% 70%, #ee583f 8%, #d92d77 42%, #bd3381 58%);
 }
 
 .dev-share-buttons__item--instagram:hover,
@@ -144,16 +147,19 @@
 .dev-share-buttons-link--instagram:focus,
 .dev-share-buttons__item--instagram:active,
 .dev-share-buttons-link--instagram:active {
-	background-color: #D53F26;
-	background-image: url(./svgs/instagram.svg), -webkit-radial-gradient(70% 70% ellipse,#D53F26 8%,#C0145E 42%,#A41A68 58%);
-    background-image: url(./svgs/instagram.svg), radial-gradient(ellipse at 70% 70%,#D53F26 8%,#C0145E 42%,#A41A68 58%);
+  background-color: #d53f26;
+  background-image: url(./svgs/instagram.svg),
+    -webkit-radial-gradient(70% 70% ellipse, #d53f26 8%, #c0145e 42%, #a41a68
+          58%);
+  background-image: url(./svgs/instagram.svg),
+    radial-gradient(ellipse at 70% 70%, #d53f26 8%, #c0145e 42%, #a41a68 58%);
 }
 
 .dev-share-buttons__item--pinterest,
 .dev-share-buttons-link--pinterest {
-	padding-left: 2.2em;
-	background-color: #cb2027;
-	background-image: url(./svgs/pinterest.svg);
+  padding-left: 2.2em;
+  background-color: #cb2027;
+  background-image: url(./svgs/pinterest.svg);
 }
 
 .dev-share-buttons__item--pinterest:hover,
@@ -162,14 +168,14 @@
 .dev-share-buttons-link--pinterest:focus,
 .dev-share-buttons__item--pinterest:active,
 .dev-share-buttons-link--pinterest:active {
-	background-color: #B2070E;
+  background-color: #b2070e;
 }
 
 .dev-share-buttons__item--github,
 .dev-share-buttons-link--github {
-	padding-left: 2.2em;
-	background-color: #171516;
-	background-image: url(./svgs/github.svg);
+  padding-left: 2.2em;
+  background-color: #171516;
+  background-image: url(./svgs/github.svg);
 }
 
 .dev-share-buttons__item--github:hover,
@@ -178,14 +184,14 @@
 .dev-share-buttons-link--github:focus,
 .dev-share-buttons__item--github:active,
 .dev-share-buttons-link--github:active {
-	background-color: #000;
+  background-color: #000;
 }
 
 .dev-share-buttons__item--whatsapp,
 .dev-share-buttons-link--whatsapp {
-	padding-left: 2.2em;
-	background-color: #64D448;
-	background-image: url(./svgs/whatsapp.svg);
+  padding-left: 2.2em;
+  background-color: #64d448;
+  background-image: url(./svgs/whatsapp.svg);
 }
 
 .dev-share-buttons__item--whatsapp:hover,
@@ -194,15 +200,15 @@
 .dev-share-buttons-link--whatsapp:focus,
 .dev-share-buttons__item--whatsapp:active,
 .dev-share-buttons-link--whatsapp:active {
-	background-color: #4BBB2F;
+  background-color: #4bbb2f;
 }
 
 .dev-share-buttons__item--snapchat,
 .dev-share-buttons-link--snapchat {
-	padding-left: 2.2em;
-	background-color: #FFFA37;
-	color: #222;
-	background-image: url(./svgs/snapchat.svg);
+  padding-left: 2.2em;
+  background-color: #fffa37;
+  color: #222;
+  background-image: url(./svgs/snapchat.svg);
 }
 
 .dev-share-buttons__item--snapchat:hover,
@@ -211,15 +217,15 @@
 .dev-share-buttons-link--snapchat:focus,
 .dev-share-buttons__item--snapchat:active,
 .dev-share-buttons-link--snapchat:active {
-	background-color: #E6E11E;
-	color: #000;
+  background-color: #e6e11e;
+  color: #000;
 }
 
 .dev-share-buttons__item--skype,
 .dev-share-buttons-link--skype {
-	padding-left: 2.2em;
-	background-color: #00AFF0;
-	background-image: url(./svgs/skype.svg);
+  padding-left: 2.2em;
+  background-color: #00aff0;
+  background-image: url(./svgs/skype.svg);
 }
 
 .dev-share-buttons__item--skype:hover,
@@ -228,14 +234,14 @@
 .dev-share-buttons-link--skype:focus,
 .dev-share-buttons__item--skype:active,
 .dev-share-buttons-link--skype:active {
-	background-color: #0096D7;
+  background-color: #0096d7;
 }
 
 .dev-share-buttons__item--reddit,
 .dev-share-buttons-link--reddit {
-	padding-left: 2.2em;
-	background-color: #ff4500;
-	background-image: url(./svgs/reddit.svg);
+  padding-left: 2.2em;
+  background-color: #ff4500;
+  background-image: url(./svgs/reddit.svg);
 }
 
 .dev-share-buttons__item--reddit:hover,
@@ -244,14 +250,14 @@
 .dev-share-buttons-link--reddit:focus,
 .dev-share-buttons__item--reddit:active,
 .dev-share-buttons-link--reddit:active {
-	background-color: #E62C00;
+  background-color: #e62c00;
 }
 
 .dev-share-buttons__item--stumbleupon,
 .dev-share-buttons-link--stumbleupon {
-	padding-left: 2.2em;
-	background-color: #eb4924;
-	background-image: url(./svgs/stumbleupon.svg);
+  padding-left: 2.2em;
+  background-color: #eb4924;
+  background-image: url(./svgs/stumbleupon.svg);
 }
 
 .dev-share-buttons__item--stumbleupon:hover,
@@ -260,14 +266,14 @@
 .dev-share-buttons-link--stumbleupon:focus,
 .dev-share-buttons__item--stumbleupon:active,
 .dev-share-buttons-link--stumbleupon:active {
-	background-color: #D2300B;
+  background-color: #d2300b;
 }
 
 .dev-share-buttons__item--wechat,
 .dev-share-buttons-link--wechat {
-	padding-left: 2.2em;
-	background-color: #7bb32e;
-	background-image: url(./svgs/wechat.svg);
+  padding-left: 2.2em;
+  background-color: #7bb32e;
+  background-image: url(./svgs/wechat.svg);
 }
 
 .dev-share-buttons__item--wechat:hover,
@@ -276,14 +282,14 @@
 .dev-share-buttons-link--wechat:focus,
 .dev-share-buttons__item--wechat:active,
 .dev-share-buttons-link--wechat:active {
-	background-color: #629A15;
+  background-color: #629a15;
 }
 
 .dev-share-buttons__item--medium,
 .dev-share-buttons-link--medium {
-	padding-left: 2.2em;
-	background-color: #00ab6c;
-	background-image: url(./svgs/medium.svg);
+  padding-left: 2.2em;
+  background-color: #00ab6c;
+  background-image: url(./svgs/medium.svg);
 }
 
 .dev-share-buttons__item--medium:hover,
@@ -292,14 +298,14 @@
 .dev-share-buttons-link--medium:focus,
 .dev-share-buttons__item--medium:active,
 .dev-share-buttons-link--medium:active {
-	background-color: #009253;
+  background-color: #009253;
 }
 
 .dev-share-buttons__item--messenger,
 .dev-share-buttons-link--messenger {
-	padding-left: 2.2em;
-	background-color: #0084ff;
-	background-image: url(./svgs/messenger.svg);
+  padding-left: 2.2em;
+  background-color: #0084ff;
+  background-image: url(./svgs/messenger.svg);
 }
 
 .dev-share-buttons__item--messenger:hover,
@@ -308,12 +314,27 @@
 .dev-share-buttons-link--messenger:focus,
 .dev-share-buttons__item--messenger:active,
 .dev-share-buttons-link--messenger:active {
-	background-color: #006BE6;
+  background-color: #006be6;
+}
+
+.dev-share-buttons__item--mastodon,
+.dev-share-buttons-link--mastodon {
+  padding-left: 2.2em;
+  background-color: #3088d4;
+  background-image: url(./svgs/mastodon.svg);
+}
+
+.dev-share-buttons__item--mastodon:hover,
+.dev-share-buttons-link--mastodon:hover,
+.dev-share-buttons__item--mastodon:focus,
+.dev-share-buttons-link--mastodon:focus,
+.dev-share-buttons__item--mastodon:active,
+.dev-share-buttons-link--mastodon:active {
+  background-color: #2778be;
 }
 
 .dev-share-buttons__item--share-api {
-	padding-left: 2.2em;
-	/*background-color: #3b5998;*/
-	background-image: url(./svgs/share.svg);
+  padding-left: 2.2em;
+  /*background-color: #3b5998;*/
+  background-image: url(./svgs/share.svg);
 }
-

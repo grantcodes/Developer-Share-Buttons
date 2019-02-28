@@ -2,8 +2,8 @@
 Contributors: terminalpixel
 Tags: share buttons, developer, social, share
 Requires at least: 3.5
-Tested up to: 4.7.2
-Stable tag: 1.2.0
+Tested up to: 5.1
+Stable tag: 1.3.0
 
 A super lightweight social sharing solution using either the Web Share API or simple sharing links.
 
@@ -113,3 +113,9 @@ The Web Share API is disabled by default but I recommend enabling it as it will 
 
 = 1.2.0 =
 * Add support for the Web Share API
+
+= 1.3.0 =
+* Add blocks for the new editor
+* Add option to enable css from the options screen
+* Add mastodon service
+* Remove Google plus service

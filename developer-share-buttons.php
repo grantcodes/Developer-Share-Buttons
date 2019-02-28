@@ -8,7 +8,7 @@
 /*
 Plugin Name: Developer Share Buttons
 Description: Share buttons with no CSS and no JavaScript
-Version: 1.2.0
+Version: 1.3.0
 Author: Grant Richmond
 Author URI: https://grant.codes/
 License: GPL3
@@ -82,6 +82,27 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'share_api_script' ) );
 
 			add_shortcode( static::$slug_, array( $this, 'shortcode' ) );
+
+			// Gutenberg stuff.
+			if ( function_exists( 'register_block_type' ) ) {
+				add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_assets' ) );
+				register_block_type( static::$slug . '/share', array(
+					'attributes' => array(
+						'className' => array(
+							'type' => 'string',
+						),
+					),
+					'render_callback' => array( $this, 'block_share' ),
+				) );
+				register_block_type( static::$slug . '/profiles', array(
+					'attributes' => array(
+						'className' => array(
+							'type' => 'string',
+						),
+					),
+					'render_callback' => array( $this, 'block_profiles' ),
+				) );
+			}
 		}
 
 		/**
@@ -130,10 +151,21 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 * @return void
 		 */
 		function enqueue_style() {
-			$load_css = false;
+			$options = get_option( static::$slug_ . '_options' );
+			$load_css = isset( $options['usecss'] ) ? $options['usecss'] : false;
 			if ( apply_filters( static::$slug_ . '_css', $load_css ) ) {
 				wp_enqueue_style( static::$slug, plugin_dir_url( __FILE__ ) . 'style.css', false, static::$version );
 			}
+		}
+
+		/**
+		 * Load the block editor stuff
+		 *
+		 * @return void
+		 */
+		function block_editor_assets() {
+			$this->enqueue_style();
+			wp_enqueue_script( static::$slug . '-blocks',  plugin_dir_url( __FILE__ ) . 'js/blocks.js', array( 'wp-blocks',  'wp-element', 'wp-components' ) );
 		}
 
 		/**
@@ -144,7 +176,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		function share_api_script() {
 			$share_api = false;
 			if ( apply_filters( static::$slug_ . '_share_api', $share_api ) ) {
-				wp_enqueue_script( static::$slug . '-share-api', plugin_dir_url( __FILE__ ) . 'share-api.js', false, static::$version, true );
+				wp_enqueue_script( static::$slug . '-share-api', plugin_dir_url( __FILE__ ) . 'js/share-api.js', false, static::$version, true );
 			}
 		}
 
@@ -188,6 +220,12 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 						'label' => __( 'Share Text', static::$slug ),
 						'desc' => __( 'The text that appears in the links', static::$slug ),
 						'type' => 'text',
+					),
+					array(
+						'name' => 'usecss',
+						'label' => __( 'Use default css styles' ),
+						'type' => 'checkbox',
+						'default' => false,
 					),
 				),
 				static::$slug_ . '_urls' => array(),
@@ -279,12 +317,6 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					'url_structure' => 'https://twitter.com/intent/tweet?url=%1$s&text=%2$s',
 					'url_after_title' => false,
 				),
-				'google' => array(
-					'id' => 'google',
-					'title' => 'Google+',
-					'url_structure' => 'https://plus.google.com/share?url=%1$s',
-					'url_after_title' => false,
-				),
 				'reddit' => array(
 					'id' => 'reddit',
 					'title' => 'Reddit',
@@ -318,6 +350,12 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 				'github' => array(
 					'id' => 'github',
 					'title' => 'GitHub',
+					'url_structure' => false,
+					'url_after_title' => false,
+				),
+				'mastodon' => array(
+					'id' => 'mastodon',
+					'title' => 'Mastodon',
 					'url_structure' => false,
 					'url_after_title' => false,
 				),
@@ -386,7 +424,8 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		 */
 		public static function get_link_html( $service, $url = '', $title = '', $text = '', $image = '' ) {
 			$services = static::get_services();
-			if ( $service = $services[ $service ] ) {
+			if ( isset( $services[ $service ] ) ) {
+				$service = $services[ $service ];
 				if ( $service['url_structure'] ) {
 					$options = get_option( static::$slug_ . '_options' );
 					$share_text = 'Share on ';
@@ -526,11 +565,11 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 		}
 
 		/**
-		 * Echos all the saved profile urls in a nice html format
+		 * Gets all the saved profile urls in a nice html format
 		 *
 		 * @return bool Success or no?
 		 */
-		public static function the_profile_links() {
+		public static function get_the_profile_links() {
 			if ( $links = static::get_profile_links() ) {
 				$html = '<div class="' . static::$slug . '-profiles">';
 				foreach ( $links as $service_id => $service_link ) {
@@ -544,11 +583,24 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					$html .= '<a ' . $attributes . '>' . $after_text . '<span class="' . static::$slug . '-link__text ' . static::$slug . '-link--' . $service_id .'__text">' . $service_link['title'] . '</span>' . $before_text . '</a> ';
 				}
 				$html .= '</div>';
-				echo $html;
-				return true;
+				return $html;
 			} else {
 				return false;
 			}
+		}
+
+		/**
+		 * Echos all the saved profile urls in a nice html format
+		 *
+		 * @return bool Success or no?
+		 */
+		public static function the_profile_links() {
+			$html = static::get_the_profile_links();
+			if ( $html ) {
+				echo $html;
+				return true;
+			}
+			return false;
 		}
 
 		/**
@@ -581,6 +633,48 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 			register_widget( 'Dev_Share_Buttons_Widget' );
 			register_widget( 'Dev_Share_Buttons_Profiles_Widget' );
 		}
+
+		/**
+		 * Basic wrapper to display the share buttons block
+		 *
+		 * @param array $attributes Gutenberg block attributes.
+		 * @return string Html block
+		 */
+		function block_share( $attributes ) {
+			$html = get_dev_share_buttons();
+			if ( ! $html && is_admin() ) {
+				return '<p class="error">No share services found</p>';
+			}
+			if ( $html ) {
+				$class = 'wp-block-' . static::$slug . '-profiles';
+				if ( $attributes['className'] ) {
+					$class .= ' ' . $attributes['className'];
+				}
+				$html = '<div class="' . $class . '">' . $html . '</div>';
+			}
+			return $html;
+		}
+
+		/**
+		 * Basic wrapper to display the social profiles block
+		 *
+		 * @param array $attributes Gutenberg block attributes.
+		 * @return string Html block
+		 */
+		function block_profiles( $attributes ) {
+			$html = get_the_dev_profile_links();
+			if ( ! $html && is_admin() ) {
+				return '<p class="error">No social profiles found</p>';
+			}
+			if ( $html ) {
+				$class = 'wp-block-' . static::$slug . '-profiles';
+				if ( $attributes['className'] ) {
+					$class .= ' ' . $attributes['className'];
+				}
+				$html = '<div class="' . $class . '">' . $html . '</div>';
+			}
+			return $html;
+		}
 	}
 
 	// Get the show on the road.
@@ -608,6 +702,12 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 	if ( ! function_exists( 'the_dev_profile_links' ) ) {
 		function the_dev_profile_links() {
 			DeveloperShareButtons::the_profile_links();
+		}
+	}
+
+	if ( ! function_exists( 'get_the_dev_profile_links' ) ) {
+		function get_the_dev_profile_links() {
+			return DeveloperShareButtons::get_the_profile_links();
 		}
 	}
 }
