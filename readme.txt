@@ -2,7 +2,7 @@
 Contributors: terminalpixel
 Tags: share buttons, developer, social, share
 Requires at least: 3.5
-Tested up to: 5.1
+Tested up to: 5.6
 Stable tag: 1.3.0
 
 A super lightweight social sharing solution using either the Web Share API or simple sharing links.
