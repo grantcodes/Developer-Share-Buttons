@@ -117,7 +117,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					'twitter'  => 'twitter',
 					'google'   => 'google',
 				),
-				'share-text' => 'Share On',
+				'share-text' => 'Share On %s',
 			);
 			add_option( static::$slug_ . '_options', $defaults );
 		}
@@ -428,7 +428,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 				$service = $services[ $service ];
 				if ( $service['url_structure'] ) {
 					$options = get_option( static::$slug_ . '_options' );
-					$share_text = 'Share on ';
+					$share_text = 'Share On %s';
 					if ( isset( $options['share-text'] ) ) {
 						$share_text = trim( $options['share-text'] ) . ' ';
 					}
@@ -471,7 +471,7 @@ if ( ! class_exists( 'DeveloperShareButtons' ) ) {
 					$before_text = apply_filters( static::$slug_ . '_before_share_text', '', $service );
 
 					$url = sprintf( $service['url_structure'], $url, $title, $text, $image );
-					$html = sprintf( '<a target="_blank" href="%1$s" class="%2$s__item %2$s__item--%3$s">%5$s<span class="%2$s__text %2$s__text--%3$s">%4$s</span>%6$s</a> ', $url, $css_class, $service['id'], $share_text . $service['title'], $before_text, $after_text );
+					$html = sprintf( '<a target="_blank" href="%1$s" class="%2$s__item %2$s__item--%3$s">%5$s<span class="%2$s__text %2$s__text--%3$s">%4$s</span>%6$s</a> ', $url, $css_class, $service['id'], str_replace( '%s', $service['title'], $share_text ), $before_text, $after_text );
 
 					return $html;
 				}
